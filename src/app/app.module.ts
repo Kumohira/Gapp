@@ -16,6 +16,7 @@ import {ProductService} from "../services/product.service";
 import {SubproductService} from "../services/subproduct.service";
 import {HttpClientModule} from "@angular/common/http";
 import {TestProvider} from '../providers/test/test';
+import {SubproductPage} from "../pages/subproduct/subproduct";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {TestProvider} from '../providers/test/test';
     RadarStandardPage,
     RadarDeveloppePage,
     SatelliteStandardPage,
-    SatelliteDeveloppePage
+    SatelliteDeveloppePage,
+    SubproductPage
   ],
   imports: [
     HttpClientModule,
@@ -42,7 +44,8 @@ import {TestProvider} from '../providers/test/test';
     RadarStandardPage,
     RadarDeveloppePage,
     SatelliteStandardPage,
-    SatelliteDeveloppePage
+    SatelliteDeveloppePage,
+    SubproductPage
   ],
   providers: [
     StatusBar,

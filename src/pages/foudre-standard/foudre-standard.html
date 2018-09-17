@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Foudre Standard</ion-title>
+    <ion-title>{{product.name}}</ion-title>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -8,5 +8,15 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-card>
+    <ion-card-header style="color: #488aff">
+      {{product.name}}
+    </ion-card-header>
 
+    <ion-list>
+      <button ion-item *ngFor="let item of product.subProducts" (click)="itemSelected(item)">
+        {{ item.name }}
+      </button>
+    </ion-list>
+  </ion-card>
 </ion-content>

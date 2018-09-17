@@ -1,7 +1,10 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {SubproductService} from "../../services/subproduct.service";
-
+import {ProductService} from "../../services/product.service";
+import {Product} from "../../model/product.model";
+import {Subproduct} from "../../model/subproduct.model";
+import {SubproductPage} from "../subproduct/subproduct";
 
 /**
  * Generated class for the FoudreStandardPage page.
@@ -18,18 +21,14 @@ import {SubproductService} from "../../services/subproduct.service";
 export class FoudreStandardPage {
 
   productId: number = 5;
-  subProductId: number = 19; // jorf_lasfer
+  product: Product = new Product();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public subProductService: SubproductService) {
-  }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public subProductService: SubproductService, public productService: ProductService) {
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FoudreStandardPage');
-
-    this.subProductService.getSubProducts()
+    this.productService.getProduct(this.productId)
       .subscribe(
-        (data) => {
-          console.log(data);
+        (data: Product) => {
+          this.product = data;
         },
         (err) => {
           console.log(err);
@@ -47,9 +46,22 @@ export class FoudreStandardPage {
     //     }
     //   )
     // ;
-
-
   }
 
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad FoudreStandardPage');
+  }
+
+  itemSelected(item: Subproduct) {
+    this.navCtrl.push(
+      SubproductPage,
+      {
+        subProduct: item
+      }
+    );
+    // this.nav.setRoot(ProductPage ,{
+    //   product: page.product
+    // });
+  }
 
 }
