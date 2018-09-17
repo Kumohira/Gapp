@@ -17,15 +17,16 @@ import {SubproductService} from "../../services/subproduct.service";
 })
 export class FoudreStandardPage {
 
-  productId: number = 1;
-  subProductId: number = 1;
+  productId: number = 5;
+  subProductId: number = 19; // jorf_lasfer
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public subProductService: SubproductService) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FoudreStandardPage');
-    this.subProductService.getImageTime(1)
+
+    this.subProductService.getSubProducts()
       .subscribe(
         (data) => {
           console.log(data);
@@ -35,6 +36,19 @@ export class FoudreStandardPage {
         }
       )
     ;
+
+    // this.subProductService.getImageTime(1)
+    //   .subscribe(
+    //     (data) => {
+    //       console.log(data);
+    //     },
+    //     (err) => {
+    //       console.log(err);
+    //     }
+    //   )
+    // ;
+
+
   }
 
 

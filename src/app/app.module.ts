@@ -15,6 +15,7 @@ import {AuthService} from "../services/auth.service";
 import {ProductService} from "../services/product.service";
 import {SubproductService} from "../services/subproduct.service";
 import {HttpClientModule} from "@angular/common/http";
+import {TestProvider} from '../providers/test/test';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import {HttpClientModule} from "@angular/common/http";
     AuthService,
     ProductService,
     SubproductService,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    TestProvider
   ]
 })
 export class AppModule {

@@ -14,11 +14,27 @@ export class SubproductService {
   }
 
   getSubProducts() {
-    return this.http.get(this.authservice.host + '/subproducts');
+    return this.authservice.authenticateUser('client1', 654321)
+      .pipe(
+        mergeMap(
+          (data: Token) => {
+            return this.http.get(this.authservice.host + '/subproducts?access_token=' + data.access_token);
+          }
+        )
+      )
+      ;
   }
 
   getSubProduct(id: number) {
-    return this.http.get(this.authservice.host + '/subproducts/' + id);
+    return this.authservice.authenticateUser('client1', 654321)
+      .pipe(
+        mergeMap(
+          (data: Token) => {
+            return this.http.get(this.authservice.host + '/subproducts/' + id + '?access_token=' + data.access_token);
+          }
+        )
+      )
+      ;
   }
 
   getImageTime(subProductId: number) {
