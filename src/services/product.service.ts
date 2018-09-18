@@ -3,11 +3,14 @@ import {HttpClient} from '@angular/common/http';
 import {AuthService} from './auth.service';
 import {mergeMap} from "rxjs/operators";
 import {Token} from "../model/token.model";
+import {Product} from "../model/product.model";
 
 @Injectable()
 export class ProductService {
 
-  currentProduct: any;
+
+  clientProduct: Product[] = [];
+  selectedProduct: Product = new Product();
 
   constructor(public http: HttpClient, public authservice: AuthService) {
   }
@@ -30,6 +33,18 @@ export class ProductService {
         mergeMap(
           (data: Token) => {
             return this.http.get(this.authservice.host + '/products/' + id + '?access_token=' + data.access_token);
+          }
+        )
+      )
+      ;
+  }
+
+  getProductsByClient(username: String) {
+    return this.authservice.authenticateUser('client1', 654321)
+      .pipe(
+        mergeMap(
+          (data: Token) => {
+            return this.http.get(this.authservice.host + '/productsbyclient/' + username + '?access_token=' + data.access_token);
           }
         )
       )

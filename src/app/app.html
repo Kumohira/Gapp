@@ -7,8 +7,8 @@
 
   <ion-content>
     <ion-list>
-      <ion-item menuClose *ngFor="let item of menus" (click)="openPage(item)">
-        {{item.title}}
+      <ion-item menuClose *ngFor="let item of clientProduct" (click)="openProductPage(item)">
+        {{item.name}}
       </ion-item>
     </ion-list>
   </ion-content>
